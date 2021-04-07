@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="layout.xhtml">
+    <ui:define name="content">
+        <h:body>
+            <h:form id="developerForm">
+                     <p:panel header="Developer">
+                    <h:panelGrid  columns = "2"
+                                 cellpadding = "10" cellspacing = "1">
+                        <p:outputLabel value="Name " />
+                        <h:outputText value="#{developerView.developer.firstname} #{developerView.developer.lastname}" />
+                        <p:outputLabel value="Email " />
+                        <h:outputText value="#{developerView.developer.email}" />
+                        <p:outputLabel value="Skills " />
+                        <h:outputText value="#{developerView.developer.skills}"/>
+                        <h:selectOneMenu id="newSkill" value="#{developerView.newSkill}" >
+                                    <f:selectItem itemValue="MSA" itemLabel="MSA" />
+                                    <f:selectItem itemValue="Java" itemLabel="Java" />
+                                    <f:selectItem itemValue="Python" itemLabel="Python" />
+                                    <f:selectItem itemValue="AWS" itemLabel="AWS" />
+                                </h:selectOneMenu>
+                                <h:commandButton value="Add Skill" action="#{developerView.addNewSkill}" />
+                          
+                       
+                    </h:panelGrid>
+                    </p:panel>
+            </h:form>
+        </h:body>
+    </ui:define>
+</ui:composition>
+</html>

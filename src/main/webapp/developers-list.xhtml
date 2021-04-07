@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+<ui:composition template="layout.xhtml">
+    <ui:define name="content">
+        <h:form id="form">
+        <p:panel header="Developers">
+            <p:dataTable id="table" var="developer" value="#{developerList.developers}">
+                
+                 <p:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{developer.firstname} #{developer.lastname}" />
+                </p:column>
+                 <p:column>
+                    <f:facet name="header">Skills</f:facet>
+                    <h:outputText value="#{developer.skills}" />
+                </p:column>
+                
+                 <p:column>
+                    <f:facet name="header"></f:facet>
+                    <p:link value="view" href="/developer-view/#{developer.id}"/>
+                </p:column>
+            </p:dataTable>
+            </p:panel>
+       </h:form> 
+         <h:form id="form1">
+        <p:panel header="Add a Developer">
+           <h:panelGrid columns="2">
+                    <p:outputLabel for="firstname" value="First Name: " />
+                    <p:inputText id="firstname" value="#{developerList.developer.firstname}" />
+                    <p:outputLabel for="lastname" value="Last Name: " />
+                    <p:inputText id="lastname" value="#{developerList.developer.lastname}" />
+                    <p:outputLabel for="email" value="Email: " />
+                    <p:inputText id="email" value="#{developerList.developer.email}" />
+                    <h:commandButton value="Create" action="#{developerList.save}" />
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+        
+    </ui:define>
+</ui:composition>
+</html>
